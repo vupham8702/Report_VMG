@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="admin/fragments/head :: head">
+    <title>Trang báo cáo</title>
+</head>
+<body class="animsition">
+<div class="page-wrapper">
+    <!-- HEADER MOBILE-->
+    <header class="header-mobile d-block d-lg-none">
+        <div class="header-mobile__bar">
+            <div class="container-fluid">
+                <div class="header-mobile-inner">
+                    <a class="logo" th:href="@{/user/list_report_user.htm}">
+                        <img th:src="@{/assets/images/icon/logomini.png}" alt="CoolAdmin"/>
+                    </a>
+                    <button class="hamburger hamburger--slider" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <nav class="navbar-mobile">
+            <div class="container-fluid">
+                <ul class="navbar-mobile__list list-unstyled">
+                    <li>
+                        <a th:href="@{/User/home}">Tổng quan</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/User/create_report}">Tạo báo cáo mới</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- END HEADER MOBILE-->
+    <!-- MENU SIDEBAR-->
+    <aside class="menu-sidebar d-none d-lg-block" th:fragment="sidebar">
+        <div class="logo">
+            <a th:href="@{/Admin/home}">
+                <img th:src="@{/assets/images/icon/logo.png}" alt="Cool Admin"/>
+            </a>
+        </div>
+        <div class="menu-sidebar__content js-scrollbar1">
+            <nav class="navbar-sidebar">
+                <ul class="list-unstyled navbar__list">
+                    <li>
+                        <a th:href="@{/User/home}">Tổng quan</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/User/create_report}">Tạo báo cáo mới</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <!-- END MENU SIDEBAR-->
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header th:replace="admin/fragments/header_desktop :: header_desktop"></header>
+        <!-- MAIN CONTENT-->
+        <div class="mt-5 pt-5 ps-4 m-sm-4 pe-4">
+            <div id="wrapper">
+                <div class="col-md-8 mx-auto rounded border p-4 m-4 ">
+                    <form id="createReportUserForm" method="post"
+                          enctype="multipart/form-data"
+                          th:object="${reportDto}"
+                          class="form">
+<!--                        th:action="@{/User/api/createReport}"-->
+                        <div class="card">
+                            <div class="card-header bg-light">
+                                <strong>Báo Cáo Mới</strong>
+                            </div>
+                            <div class="card-body card-block">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label class="col-form-label">Báo cáo ngày:</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <label>
+                                            <input id="datetimepicker" name="datetimepicker" class="form-control" type="datetime-local"
+                                                   th:field="${reportDto.createAt}" required>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label class="form-control-label">Tên</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <label>
+                                            <input id="nameCreateReport" name="createBy" class="form-control"
+                                                   th:field="${reportDto.createBy}" required>
+                                        </label>
+                                        <p th:if="${#fields.hasErrors('createBy')}" th:errorclass="text-danger"
+                                           th:errors="${reportDto.createBy}"></p>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label class="form-control-label">Báo Cáo</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <label>
+                                            <input id="uploadFile" name="file" class="form-control" type="file"
+                                                   th:field="${reportDto.file}">
+                                        </label>
+                                        <p th:if="${#fields.hasErrors('file')}" th:errorclass="text-danger"
+                                           th:errors="${reportDto.file}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <div class="row">
+                                    <div class=" col-md-2 d-grid">
+                                        <button id="createReportUserBtn" type="submit" class="btn btn-primary mb-2">
+                                            Duyệt
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--JS-->
+<div th:replace="admin/fragments/script :: script"></div>
+<script>
+    var formatDateMin = (dateMin) => moment(dateMin).subtract(1, 'days').format('YYYY-MM-DDT00:00')
+    var formatDateMax = (dateMax) => moment(dateMax).format('YYYY-MM-DDT00:00')
+    document.getElementById('datetimepicker').min = formatDateMin(new Date())
+    document.getElementById('datetimepicker').max = formatDateMax(new Date())
+</script>
+</body>
+</html>

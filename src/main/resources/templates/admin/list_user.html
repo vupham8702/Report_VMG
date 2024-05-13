@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<head th:replace="admin/fragments/head :: head">
+  <title>Quản lý User</title>
+</head>
+<body class="animsition">
+<div class="page-wrapper">
+  <!--    header-->
+  <div th:replace="admin/fragments/header :: header"></div>
+  <!--    sidebar-->
+  <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+  <!-- PAGE CONTAINER-->
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header th:replace="admin/fragments/header_desktop :: header_desktop"></header>
+    <!-- HEADER DESKTOP-->
+    <!-- MAIN CONTENT-->
+    <div class="table-dev mt-5 pt-5 ps-4  pe-4">
+      <div class="container-fluid border">
+        <div class="border mr-4 mb-4 ml-auto" style="width:100px;">
+          <form class=" " th:action="@{/Admin/create_user}" method="get">
+          <button class="btn btn-primary " type="submit">Tạo tài khoản</button>
+        </form>
+        </div>
+      </div>
+      <div id="datatable_admin">
+      </div>
+      <div>
+        <table class="table table-striped table-hover mr-auto m-sm-4 bg-light" id="table_user">
+          <thead class=""></thead>
+          <tbody id="userList"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- END MAIN CONTENT-->
+    <!-- END PAGE CONTAINER-->
+  </div>
+</div>
+<!--JS-->
+<div th:replace="admin/fragments/script :: script"></div>
+</body>
+</html>
+<!-- end document-->

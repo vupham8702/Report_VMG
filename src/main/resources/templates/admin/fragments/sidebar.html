@@ -1,0 +1,24 @@
+<!-- MENU SIDEBAR-->
+<aside class="menu-sidebar d-none d-lg-block" th:fragment="sidebar">
+    <div class="logo">
+        <a th:href="@{/Admin/home}">
+            <img th:src="@{/assets/images/icon/logo.png}" alt="Cool Admin"/>
+        </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+        <nav class="navbar-sidebar">
+            <ul class="list-unstyled navbar__list">
+                <li>
+                    <a th:href="@{/Admin/home}">Tổng quan</a>
+                </li>
+                <li>
+                    <a th:href="@{/Admin/list_user}">Người dùng</a>
+                </li>
+                <li>
+                    <a th:href="@{/Admin/list_report}">Báo cáo</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<!-- END MENU SIDEBAR-->

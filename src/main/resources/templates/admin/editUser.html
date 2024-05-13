@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<!--head-->
+<head th:replace="admin/fragments/head :: head">
+    <title>Tổng quan</title>
+</head>
+<body class="animsition">
+<div class="page-wrapper">
+    <!--    header-->
+    <div th:replace="admin/fragments/header :: header"></div>
+    <!--    sidebar-->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header th:replace="admin/fragments/header_desktop :: header_desktop"></header>
+        <!-- HEADER DESKTOP-->
+        <!-- MAIN CONTENT-->
+        <div class="mt-5 pt-5 ps-4 m-sm-4 pe-4">
+            <div id="wrapper">
+                <form id="editUserForm"  method="post" enctype="multipart/form-data">
+                    <div class="card mt-5">
+                        <div class="card-header bg-light">
+                            <strong>Chỉnh Sửa User</strong>
+                        </div>
+                        <div class="card-body card-block bg-light">
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label"> Tên</label>
+                                <div class="col-sm-8">
+                                    <label>
+                                        <input id="nameEdit" class="form-control">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label">Username</label>
+                                <div class="col-sm-8">
+                                    <label>
+                                        <input id="userNameEdit" class="form-control">
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <label class="col-sm-4 col-form-label"> Công Ty</label>
+                                <div class="col-sm-8">
+                                    <label>
+                                        <select id="companyIdEdit" class="form-select">
+                                            <option value="FPT Software">FPT Software</option>
+                                            <option value="FPT Information System">FPT Information System</option>
+                                            <option value="FPT Telecom">FPT Telecom</option>
+                                            <option value="FPT OnlineMK">FPT OnlineMK</option>
+                                            <option value="FPT Education">FPT Education</option>
+                                            <option value="FPT Online">FPT Online</option>
+                                            <option value="FPT Smart Cloud">FPT Smart Cloud</option>
+                                            <option value="FPT Investment">FPT Investment</option>
+                                            <option value="FPT Digital">FPT Digital</option>
+                                            <option value="VMGmedia">VMGmedia</option>
+                                        </select>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class=" col-md-2 d-grid">
+                                    <button id="editUserBtn" type="submit" class="btn btn-primary ">
+                                        Duyệt
+                                    </button>
+                                    <a class="btn btn-outline-primary" th:href="@{/Admin/list_user}" role="button">
+                                        Trở lại
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+        <!-- END MAIN CONTENT-->
+        <!-- END PAGE CONTAINER-->
+    </div>
+    <!--JS-->
+    <div th:replace="admin/fragments/script :: script"></div>
+</div>
+</body>
+</html>
+<!-- end document-->

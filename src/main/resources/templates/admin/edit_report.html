@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security6">
+<!--head-->
+<head th:replace="admin/fragments/head :: head">
+    <title>Tổng quan</title>
+</head>
+<body class="animsition">
+<div class="page-wrapper">
+    <!--    header-->
+    <div th:replace="admin/fragments/header :: header"></div>
+    <!--    sidebar-->
+    <div th:replace="admin/fragments/sidebar :: sidebar"></div>
+    <!-- PAGE CONTAINER-->
+    <div class="page-container">
+        <!-- HEADER DESKTOP-->
+        <header th:replace="admin/fragments/header_desktop :: header_desktop"></header>
+        <!-- HEADER DESKTOP-->
+        <!-- MAIN CONTENT-->
+        <div class="mt-5 pt-5 ps-4 m-sm-4 pe-4">
+            <div id="wrapper">
+                <form id="editReportUser" enctype="multipart/form-data" th:object="${reportDto}" method="post" >
+                    <div class="card mt-5">
+                        <div class="card-header bg-light">
+                            <strong>Chỉnh Sửa Báo Cáo</strong>
+                        </div>
+                        <div id="editReportForm" class="card-body card-block">
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Họ và Tên</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input class="form-control" th:field="${reportDto.createBy}">
+                                    <p th:if="${#fields.hasErrors('createBy')}" th:errorclass="text-danger"
+                                       th:errors="${reportDto.createBy}"></p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Công Ty</label>
+                                </div>
+                                <div class=" col-12 col-md-9">
+                                    <select class="form-select" th:field="${reportDto.company}">
+                                        <option value="1">FPT Software</option>
+                                        <option value="2">FPT Information System</option>
+                                        <option value="3">FPT Telecom</option>
+                                        <option value="4">FPT OnlineMK</option>
+                                        <option value="5">FPT Education</option>
+                                        <option value="6">FPT Online</option>
+                                        <option value="7">FPT Smart Cloud</option>
+                                        <option value="8">FPT Investment</option>
+                                        <option value="9">FPT Digital</option>
+                                        <option value="10">VMGmedia</option>
+                                    </select>
+                                    <p th:if="${#fields.hasErrors('company')}" th:errorclass="text-danger"
+                                       th:errors="${reportDto.company}"></p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Báo Cáo</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input id="editFileLabel" class="form-control" type="file" th:field="${reportDto.file}">
+                                    <p th:if="${#fields.hasErrors('file')}" th:errorclass="text-danger"
+                                       th:errors="${reportDto.file}" ></p>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Ngày Nộp</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input readonly class="form-contr-plaintext"
+                                           th:value="${report.getCreateAt}">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class=" col-md-2 d-grid">
+                                    <button id="editReportBtn" type="submit" class="btn btn-primary ">
+                                        Duyệt
+                                    </button>
+                                    <a class="btn btn-outline-primary" th:href="@{/Admin/list_report}" role="button">
+                                        Trở lại
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- END MAIN CONTENT-->
+<!-- END PAGE CONTAINER-->
+
+<!--JS-->
+<div th:replace="admin/fragments/script :: script"></div>
+
+</body>
+</html>

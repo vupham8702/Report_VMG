@@ -1,0 +1,65 @@
+<!-- HEADER DESKTOP-->
+<header class="header-desktop" th:fragment="header_desktop" xmlns:sec="http://www.w3.org/1999/xhtml"
+>
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="header-wrap">
+                <div>
+                    <div>
+                        <div class="input-group ps-4 pe-4 mt-2">
+                            <input id="searchUserInput" type="text" class="form-control"
+                                   placeholder="Nhập từ khóa tìm kiếm...">
+                            <button id="searchUserBtn" class="btn btn-primary mt-2">Tìm kiếm</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-button">
+
+                    <div class="account-wrap">
+                        <div class="account-item clearfix js-item-menu">
+                            <div class="image">
+                                <img th:src="@{/assets/images/icon/avatar-01.jpg}" alt="John Doe"/>
+                            </div>
+                            <div class="content">
+                                <a class="js-acc-btn" id="username"></a>
+                            </div>
+                            <div class="account-dropdown js-dropdown">
+                                <div class="info clearfix">
+                                    <div class="image">
+                                        <a href="#">
+                                            <img th:src="@{/assets/images/icon/avatar-01.jpg}" alt="John Doe"/>
+                                        </a>
+                                    </div>
+                                    <div class="content">
+                                        <h5 class="name">
+                                            <a sec:authentication="name"></a>
+                                        </h5>
+                                    </div>
+                                    <div class="account-dropdown__body">
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-account"></i>Account</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-settings"></i>Setting</a>
+                                        </div>
+                                        <div class="account-dropdown__item">
+                                            <a href="#">
+                                                <i class="zmdi zmdi-money-box"></i>Billing</a>
+                                        </div>
+                                    </div>
+                                    <div class="account-dropdown__footer">
+                                        <a th:href="@{/logout}">
+                                            <i class="zmdi zmdi-power"></i>Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- HEADER DESKTOP-->

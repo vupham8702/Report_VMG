@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security6">
+<!--head-->
+<head th:replace="admin/fragments/head :: head">
+  <title>Tổng quan</title>
+</head>
+<body class="animsition">
+<div class="page-wrapper">
+  <!-- HEADER MOBILE-->
+  <header class="header-mobile d-block d-lg-none">
+    <div class="header-mobile__bar">
+      <div class="container-fluid">
+        <div class="header-mobile-inner">
+          <a class="logo" th:href="@{/user/list_report_user.htm}">
+            <img th:src="@{/assets/images/icon/logomini.png}" alt="CoolAdmin"/>
+          </a>
+          <button class="hamburger hamburger--slider" type="button">
+                    <span class="hamburger-box">
+                        <span class="hamburger-inner"></span>
+                    </span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar-mobile">
+      <div class="container-fluid">
+        <ul class="navbar-mobile__list list-unstyled">
+          <li>
+            <a th:href="@{/User/home}">Tổng quan</a>
+          </li>
+          <li>
+            <a th:href="@{/User/create_report}">Tạo báo cáo mới</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- END HEADER MOBILE-->
+  <!--    sidebar-->
+  <aside class="menu-sidebar d-none d-lg-block" th:fragment="sidebar">
+    <div class="logo">
+      <a th:href="@{/Admin/home}">
+        <img th:src="@{/assets/images/icon/logo.png}" alt="Cool Admin"/>
+      </a>
+    </div>
+    <div class="menu-sidebar__content js-scrollbar1">
+      <nav class="navbar-sidebar">
+        <ul class="list-unstyled navbar__list">
+          <li>
+            <a th:href="@{/User/home}">Tổng quan</a>
+          </li>
+          <li>
+            <a th:href="@{/User/create_report}">Tạo báo cáo mới</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- PAGE CONTAINER-->
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header th:replace="admin/fragments/header_desktop :: header_desktop"></header>
+    <!-- HEADER DESKTOP-->
+    <!-- MAIN CONTENT-->
+    <div class="table-dev mt-5 pt-5 ps-4  pe-4">
+      <div id="datatable_file">
+      </div>
+      <div class="container-fluid border">
+        <table class="table table-striped table-hover mr-auto bg-light" id="table_file">
+          <thead class="">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Tên báo cáo</th>
+            <th scope="col">Doanh thu</th>
+            <th scope="col">Nợ</th>
+            <th scope="col">Chi phí</th>
+            <th scope="col">Lợi nhuận</th>
+            <th scope="col">Ngày gửi</th>
+            <th scope="col">Người gửi</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="tempCompanyReport : ${files}">
+            <td th:text="${tempCompanyReport.id}"></td>
+            <td th:text="${tempCompanyReport.name}"></td>
+            <td th:text="${tempCompanyReport.revenue}"></td>
+            <td th:text="${tempCompanyReport.accountsPayable}"></td>
+            <td th:text="${tempCompanyReport.expenses}"></td>
+            <td th:text="${tempCompanyReport.profit}"></td>
+            <td th:text="${tempCompanyReport.createAt}"></td>
+            <td th:text="${tempCompanyReport.createBy}"></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- END MAIN CONTENT-->
+<!-- END PAGE CONTAINER-->
+
+<!--JS-->
+<div th:replace="admin/fragments/script :: script"></div>
+
+</body>
+</html>
